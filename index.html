@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LearnlyApp</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 min-h-screen flex items-center justify-center">
+    <!-- Landing Page Section -->
+    <div id="landingPage" class="w-full max-w-2xl mx-4">
+        <div class="bg-white rounded-[2rem] shadow-xl p-12 relative overflow-hidden">
+            <!-- Colored borders -->
+            <div class="absolute top-0 right-0 w-16 h-16 bg-red-500"></div>
+            <div class="absolute top-0 right-16 w-16 h-16 bg-purple-600"></div>
+            <div class="absolute top-0 right-32 w-16 h-16 bg-emerald-700"></div>
+            
+            <div class="text-center pt-16">
+                <h1 class="text-6xl font-bold text-emerald-800 mb-6">LearnlyApp</h1>
+                <p class="text-2xl text-gray-700 mb-12">
+                    Convert your lessons to gamified learning experience
+                </p>
+                <!-- Changed back to emerald color -->
+                <button id="startQuizBtn" class="bg-emerald-700 text-white text-xl font-semibold py-4 px-8 rounded-lg hover:bg-emerald-800 transition-colors duration-300 shadow-lg">
+                    Start Quiz
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Quiz Section (Initially Hidden) -->
+    <div id="quizSection" class="hidden w-full">
+        <div class="container mx-auto px-4 py-8 max-w-2xl">
+            <!-- Header Section -->
+            <div class="flex items-center justify-between mb-6">
+                <button class="text-gray-600 hover:text-gray-800">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+                    </svg>
+                </button>
+                <div class="text-sm text-gray-600">Question <span id="currentQuestion">1</span>/2</div>
+            </div>
+
+            <!-- Progress Bar -->
+            <div class="bg-purple-600 p-4 rounded-lg mb-8">
+                <div class="flex justify-between text-white mb-2">
+                    <div>Goal: 20 points</div>
+                    <div>Current Points: <span id="points">0</span></div>
+                </div>
+            </div>
+
+            <!-- Quiz Container -->
+            <div id="quizContainer">
+                <!-- Multiple Choice Question -->
+                <div id="multipleChoice" class="mb-8">
+                    <h2 class="text-xl font-semibold mb-4">Question 1</h2>
+                    <p class="text-gray-700 mb-6">What is the capital of France?</p>
+                    
+                    <div class="space-y-3">
+                        <button class="w-full p-4 text-left rounded-lg border border-gray-200 hover:border-purple-500 transition-colors option">
+                            <span class="font-medium">A.</span> London
+                        </button>
+                        <button class="w-full p-4 text-left rounded-lg border border-gray-200 hover:border-purple-500 transition-colors option">
+                            <span class="font-medium">B.</span> Paris
+                        </button>
+                        <button class="w-full p-4 text-left rounded-lg border border-gray-200 hover:border-purple-500 transition-colors option">
+                            <span class="font-medium">C.</span> Berlin
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Drag and Drop Question (Initially Hidden) -->
+                <div id="dragDrop" class="hidden">
+                    <h2 class="text-xl font-semibold mb-4">Question 2</h2>
+                    <p class="text-gray-700 mb-6">Match the terms with their definitions</p>
+                    
+                    <div class="grid grid-cols-2 gap-4 mb-6">
+                        <!-- Dropzones -->
+                        <div class="bg-purple-50 p-4 rounded-lg dropzone" data-match="term1">
+                            A number that stays the same
+                        </div>
+                        <div class="bg-purple-50 p-4 rounded-lg dropzone" data-match="term2">
+                            A symbol representing a value
+                        </div>
+                    </div>
+
+                    <!-- Draggable Items -->
+                    <div class="flex flex-wrap gap-4 mt-8">
+                        <div class="bg-gray-800 text-white p-3 rounded cursor-move draggable" draggable="true" data-term="term1">
+                            Constant
+                        </div>
+                        <div class="bg-gray-800 text-white p-3 rounded cursor-move draggable" draggable="true" data-term="term2">
+                            Variable
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Feedback Messages -->
+                <div id="feedback" class="mt-6 p-4 rounded-lg hidden">
+                    <!-- Will be populated by JavaScript -->
+                </div>
+
+                <!-- Continue Button -->
+                <button id="continueBtn" class="w-full bg-purple-600 text-white py-3 px-6 rounded-lg mt-6 hover:bg-purple-700 transition-colors">
+                    Continue →
+                </button>
+            </div>
+        </div>
+    </div>
+    <script src="app.js"></script>
+</body>
+</html> 
